@@ -1,0 +1,453 @@
+
+body {
+  font-family: "Kanit", serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: #ffffff;
+  min-height: 100vh;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+body.dark-mode {
+  background-color: #121212; /* Dark mode background */
+  color: #e0e0e0; /* Adjust text color */
+}
+
+footer.dark-mode {
+  background: #1c1c1c; /* Dark background for footer */
+  color: #e0e0e0; /* Lighter text color for better visibility */
+}
+
+footer {
+  position: relative;
+  width: 100%;
+  background: #3586ff;
+  min-height: 100px;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+footer .social_icon,
+footer .menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+footer .social_icon li,
+footer .menu li {
+  list-style: none;
+}
+
+footer .social_icon li a {
+  font-size: 2em;
+  color: #fff;
+  margin: 0 15px;
+  display: inline-block;
+  transition: 0.5s;
+}
+
+footer .social_icon li a:hover {
+  transform: translate(-10px);
+}
+
+footer .menu li a {
+  font-size: 1.2em;
+  color: #fff;
+  margin: 2px;
+  display: inline-block;
+  text-decoration: none;
+  opacity: 0.75;
+}
+
+footer .menu li a:hover {
+  opacity: 1;
+}
+
+footer p {
+  color: #fff;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  margin-left: 30px;
+  font-size: 1em;
+}
+
+/*darkmode function for wave*/
+footer.dark-mode .wave {
+  background: url(img/wave-dark.png); /* Use a darker wave background image */
+  background-size: 1000px 100px;
+}
+
+footer .wave {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url(img/wave.png);
+  background-size: 1000px 100px;
+}
+
+footer .wave#wave1 {
+  z-index: 1000;
+  opacity: 1;
+  bottom: 0;
+  animation: animateWave 4s linear infinite;
+}
+
+footer .wave#wave2 {
+  z-index: 999;
+  opacity: 0.5;
+  bottom: 10px;
+  animation: animateWave_02 4s linear infinite;
+}
+
+footer .wave#wave3 {
+  z-index: 1000;
+  opacity: 0.2;
+  bottom: 15px;
+  animation: animateWave 3s linear infinite;
+}
+
+footer .wave#wave4 {
+  z-index: 999;
+  opacity: 0.7;
+  bottom: 20px;
+  animation: animateWave_02 3s linear infinite;
+}
+
+@keyframes animateWave {
+  0%{
+    background-position-x: 1000px;
+  }
+  100%{
+    background-position-x: 0px;
+  }
+}
+
+@keyframes animateWave_02 {
+  0%{
+    background-position-x: 0px;
+  }
+  100%{
+    background-position-x: 1000px;
+  }
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  background: transparent; /* Default background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-item .dropdown-menu .dropdown-item:hover {
+  background-color: #6e5e0b; /* Change to your desired hover background color */
+  color: white; /* Change to your desired text color */
+}
+
+
+.navbar.scrolled {
+  background: white; /* White background when scrolled */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white; /* Default text color */
+  font-size: 1rem;
+  opacity: 0; /* Initially invisible */
+  transition: opacity 0.3s, color 0.3s;
+}
+
+.navbar.scrolled a {
+  opacity: 1; /* Become visible after scrolling */
+  color: black; /* Change text color to black */
+}
+
+/* Toggler Button */
+.navbar-toggler {
+  opacity: 0;
+  transform: translateY(-20px); /* Slide up initially */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.navbar.scrolled .navbar-toggler {
+  opacity: 1;
+  transform: translateY(0); /* Reset position */
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='black' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  /* Update icon color to black for white background */
+}
+
+/* Logo */
+.navbar-logo {
+  height: 50px;
+  width: 50px;
+}
+
+/* Navbar Scrolled State */
+.navbar.scrolled .navbar-logo {
+  filter: none; /* Optional: remove any color inversion for the logo */
+}
+
+/* Dark Mode Toggle */
+.nav-item .form-check-label {
+  font-size: 1rem;
+  margin-left: 0.5rem;
+}
+
+.navbar.scrolled .nav-item .form-check-label {
+  color: black; /* Adjust dark mode toggle label color */
+}
+
+.navbar.scrolled .form-check-input {
+  border-color: black; /* Adjust border for the dark mode toggle */
+}
+
+/* Dark Mode Navbar */
+.navbar.dark-mode {
+  background: #343a40 !important; /* Dark background for dark mode */
+  color: white;
+}
+
+.navbar.dark-mode a {
+  color: white !important; /* Navbar link text color */
+}
+
+.navbar.dark-mode .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar.dark-mode .form-check-input {
+  border-color: white; /* Border for the dark mode toggle */
+}
+
+.navbar.dark-mode .form-check-label {
+  color: white;
+}
+
+.navbar.dark-mode .search-form .form-control {
+  background: #495057; /* Darker input background */
+  color: white;
+}
+
+.navbar.dark-mode .search-form .btn {
+  color: white !important; /* White text for dark mode */
+  border: 1px solid white; /* White border for dark mode */
+  background-color: #343a40; /* Match dark mode background */
+}
+
+/*container fluid with uitm logo darkmode function*/
+.container-fluid.dark-mode {
+  background-color: #1c1c1c; /* Dark background for the container */
+  color: #e0e0e0; /* Light text color */
+}
+
+.container-fluid.dark-mode h3, 
+.container-fluid.dark-mode h5, 
+.container-fluid.dark-mode p, 
+.container-fluid.dark-mode span {
+  color: #e0e0e0; /* Ensure all text is visible in dark mode */
+}
+
+/* Search Form */
+.search-form .form-control {
+  border: 1px solid black; /* Border for input field */
+}
+
+.search-form .btn {
+  color: black; /* Text color for button */
+  border-color: black; /* Border color for button */
+}
+
+.navbar.scrolled .search-form .btn {
+  color: black; /* Adjust button color for scrolled state */
+}
+
+/* Initial State - Invisible */
+.navbar-logo,
+.search-form,
+.nav-item .form-check-input,
+.nav-item .form-check-label,
+.nav a {
+  opacity: 0;
+  transform: translateY(-20px); /* Move slightly up for animation effect */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Visible State - After Scrolling */
+.navbar.scrolled .navbar-logo,
+.navbar.scrolled .search-form,
+.navbar.scrolled .nav-item .form-check-input,
+.navbar.scrolled .nav-item .form-check-label,
+.navbar.scrolled .nav a {
+  opacity: 1;
+  transform: translateY(0); /* Reset position */
+}
+
+/* Main Section */
+.container-fluid.main-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.container-fluid.main-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container-fluid.main-section .main-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(255deg, #66286b96, #21837e8f, #ad7f2ab6); /* Semi-transparent overlay */
+  z-index: 1;
+}
+
+.container-fluid.main-section .main-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+  color: white;
+}
+
+.container-fluid.main-section .main-content h1 {
+  font-family: "Kanit", sans-serif, cursive;
+  font-size: 6rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: transparent;
+  background: rgba(0, 0, 0, 0.596);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.container-fluid.main-section .main-content p {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #f1f1f1;
+}
+
+/* Extra Content Sections */
+.extra-content {
+  font-size: 20px;
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+  text-align: center;
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.custom-carousel {
+  border-radius: 15px; /* Rounded edges for the entire carousel */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Floating shadow effect */
+  overflow: hidden; /* Ensures content respects rounded corners */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.custom-carousel:hover {
+  transform: translateY(-10px); /* Slight upward lift on hover */
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+.carousel-inner img {
+  border-radius: 15px; /* Ensures images also have rounded edges */
+}
+
+.popover-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+#popover-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#popover-btn img {
+  width: 70px;
+  height: 70px;
+}
+
+.popover {
+  position: absolute;
+  bottom: 100px; /* Adjust based on the button size */
+  right: 0;
+  width: 200px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1000;
+  text-align: center; /* Center-aligns all text within the popover */
+  font-family: 'Kanit', serif; /* Applies the Kanit, Serif font */
+}
+
+.popover.hidden {
+  display: none;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.6); /* Add a semi-transparent black background */
+  border-radius: 50%; /* Make it circular */
+  width: 40px; /* Adjust size */
+  height: 40px; /* Adjust size */
+  opacity: 0.5; /* Make it more opaque */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add shadow for better visibility */
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+  background-color: rgba(0, 0, 0, 0.9); /* Darker on hover */
+  opacity: 1; /* Fully opaque on hover */
+  transform: scale(1.1); /* Slight zoom effect on hover */
+  transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
